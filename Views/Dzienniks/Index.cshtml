@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProjektBDanych.Models.Dziennik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]">Nazwisko</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["GradeSortParam"]">Ocena</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]">Data Oceny</a>
+            </th>
+            <th>Przedmiot</th>
+            <th>Nazwa Klasy</th>
+            <th>Rok Szkolny</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                <td>@Html.DisplayFor(modelItem => item.Grade)</td>
+                <td>@Html.DisplayFor(modelItem => item.GradeDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+                <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+                <td>@Html.DisplayFor(modelItem => item.SchoolYear)</td>
+            </tr>
+        }
+    <th>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["GradeSortParam"]">
+            Ocena
+                @if (ViewData["GradeSortParam"].ToString() == "grade_desc")
+                {
+                <span>&#9660;</span> <!-- Ikona strzałki w dół -->
+                }
+                else if (ViewData["GradeSortParam"].ToString() == "")
+                {
+                <span>&#9650;</span> <!-- Ikona strzałki w górę -->
+                }
+        </a>
+    </th>
+    </tbody>
+</table>
+
