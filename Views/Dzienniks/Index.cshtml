@@ -25,7 +25,6 @@
             <th>Przedmiot</th>
             <th>Nazwa Klasy</th>
             <th>Rok Szkolny</th>
-            
         </tr>
     </thead>
     <tbody>
@@ -39,6 +38,12 @@
                 <td>@Html.DisplayFor(modelItem => item.Subject)</td>
                 <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
                 <td>@Html.DisplayFor(modelItem => item.SchoolYear)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
             </tr>
         }
     <th>
@@ -46,11 +51,11 @@
             Ocena
                 @if (ViewData["GradeSortParam"].ToString() == "grade_desc")
                 {
-                <span>&#9660;</span> <!-- Ikona strzałki w dół -->
+                <span>&#9660;</span>
                 }
                 else if (ViewData["GradeSortParam"].ToString() == "")
                 {
-                <span>&#9650;</span> <!-- Ikona strzałki w górę -->
+                <span>&#9650;</span>
                 }
         </a>
     </th>
